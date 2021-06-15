@@ -1,0 +1,27 @@
+{
+  "name": "Cool chrome theme",
+  "description": "See the beautiful wallpaper when ever you see the new tap in your chrome browser",
+  "version": "1.0",
+  "manifest_version": 3,
+  "permissions": ["tabs"],
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_icon": {
+      "16": "/images/cool16.png",
+      "32": "/images/cool32.png",
+      "48": "/images/cool48.png",
+      "128": "/images/cool128.png"
+    }
+  },
+  "icons": {
+    "16": "/images/cool16.png",
+    "32": "/images/cool32.png",
+    "48": "/images/cool48.png",
+    "128": "/images/cool128.png"
+  }
+}

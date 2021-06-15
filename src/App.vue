@@ -1,26 +1,62 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="date-time-wrapper">
+    <h1 class="time">{{time}}</h1>
+    <h3 class="greet">{{greeting}}</h3>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  setup() {
+    const dateObject = new Date();
+    const hour = dateObject.getHours();
+    let greet = "Good";
+    
+    if(hour <= 11) {
+      greet += " morning";
+    }else if(hour <= 18) {
+      greet += " afternoon";
+    }else {
+      greet += " evening";
+    }
+    return {
+      greeting: greet,
+      time: `${hour +":"+dateObject.getMinutes()}`
+    }
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  .date-time-wrapper {
+    text-align: center;
+    margin: auto;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+  }
+  .time {
+    font-size: 8rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .greet {
+    font-size: 3.5rem;
+    font-weight: 400;
+  }
+  body {
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+    background-image: url(https://source.unsplash.com/random);
+    background-size: cover;
+    background-color: auto;
+  }
 </style>
